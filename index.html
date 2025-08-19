@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Tarefas Mainframe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gestão de Tarefas Mainframe</h1>
+    </header>
+
+    <main>
+        <div class="actions-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Pesquisar por descrição ou número da tarefa...">
+                <button onclick="filterTasks()">Pesquisar</button>
+            </div>
+            <div class="buttons-container">
+                <button id="newTaskBtn">Nova Tarefa</button>
+                <button id="downloadBtn">Baixar Backup</button>
+                <input type="file" id="uploadFile" style="display: none;">
+                <button id="uploadBtn">Carregar Backup</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="tasksTable">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Nº da História</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th>Data de Início</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <form id="taskForm">
+                <h2>Detalhes da Tarefa</h2>
+                <input type="hidden" id="taskId">
+
+                <div class="form-group">
+                    <label for="historyNumber">Nº da História:</label>
+                    <input type="text" id="historyNumber" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDescription">Descrição da Tarefa:</label>
+                    <textarea id="taskDescription" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="programs">Programas (1 ou mais, separados por vírgula):</label>
+                    <input type="text" id="programs">
+                </div>
+                <div class="form-group">
+                    <label for="mainPackage">Pacote Principal:</label>
+                    <input type="text" id="mainPackage">
+                </div>
+                <div class="form-group">
+                    <label for="contingencyPackage">Pacote Contingência (Opcional):</label>
+                    <input type="text" id="contingencyPackage">
+                </div>
+                <div class="form-group">
+                    <label for="mainTicket">Ticket Principal:</label>
+                    <input type="text" id="mainTicket">
+                </div>
+                <div class="form-group">
+                    <label for="contingencyTicket">Ticket Contingência (Opcional):</label>
+                    <input type="text" id="contingencyTicket">
+                </div>
+                <div class="form-group">
+                    <label for="books">Books (1 ou mais, separados por vírgula):</label>
+                    <input type="text" id="books">
+                </div>
+                <div class="form-group">
+                    <label for="bookPackage">Pacote Associado aos Books:</label>
+                    <input type="text" id="bookPackage">
+                </div>
+
+                <div class="form-group">
+                    <label for="taskStatus">Status:</label>
+                    <select id="taskStatus" required>
+                        <option value="Em Andamento">Em Andamento</option>
+                        <option value="Concluída">Concluída</option>
+                        <option value="Suspensa">Suspensa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskStartDate">Data de Início:</label>
+                    <input type="date" id="taskStartDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Cenários de Teste:</label>
+                    <div id="testScenariosContainer">
+                        <div class="scenario-item">
+                            <input type="text" class="testScenarioInput" placeholder="Cenário de Teste 1" required>
+                            <button type="button" class="delete-scenario-btn" style="display: none;">Deletar</button>
+                        </div>
+                    </div>
+                    <button type="button" id="addScenarioBtn">Adicionar Cenário</button>
+                </div>
+
+                <button type="submit" class="save-btn">Salvar Tarefa</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
